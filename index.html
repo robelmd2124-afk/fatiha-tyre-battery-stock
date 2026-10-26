@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatiha Tyre & Battery — Stock Management</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="logo">FT</div>
+    <div>
+      <h1 id="shopNameTitle">Fatiha Tyre & Battery</h1>
+      <p>স্টক ম্যানেজমেন্ট</p>
+    </div>
+  </div>
+  <button id="refreshBtn" class="btn secondary">↻ রিফ্রেশ</button>
+</header>
+
+<nav class="tabs" id="mainTabs">
+  <button data-tab="dashboard" class="active">ড্যাশবোর্ড</button>
+  <button data-tab="products">স্টক</button>
+  <button data-tab="purchases">ক্রয়</button>
+  <button data-tab="sales">বিক্রয়</button>
+  <button data-tab="suppliers">সাপ্লায়ার</button>
+  <button data-tab="customers">কাস্টমার</button>
+  <button data-tab="dues">বাকি</button>
+  <button data-tab="settings">সেটিংস</button>
+</nav>
+
+<main>
+  <div id="statusBar" class="status">লোড হচ্ছে…</div>
+
+  <!-- DASHBOARD -->
+  <section id="tab-dashboard" class="tabpage active">
+    <div class="cards">
+      <div class="card"><span>মোট স্টক মূল্য (ক্রয় দরে)</span><b id="dStockValue">৳ ০</b></div>
+      <div class="card"><span>আজকের বিক্রয়</span><b id="dTodaySales">৳ ০</b></div>
+      <div class="card"><span>কাস্টমার বাকি</span><b id="dCustDue">৳ ০</b></div>
+      <div class="card"><span>সাপ্লায়ার বাকি</span><b id="dSupDue">৳ ০</b></div>
+      <div class="card warn"><span>লো স্টক আইটেম</span><b id="dLowCount">০</b></div>
+    </div>
+    <h2>লো স্টক / নেগেটিভ স্টক</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>প্রোডাক্ট</th><th>ক্যাটাগরি</th><th>স্টক</th><th>মিনিমাম</th></tr></thead>
+      <tbody id="lowTable"></tbody>
+    </table></div>
+    <h2>সাম্প্রতিক বিক্রয়</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>তারিখ</th><th>প্রোডাক্ট</th><th>কাস্টমার</th><th>পরিমাণ</th><th>মোট</th></tr></thead>
+      <tbody id="recentSales"></tbody>
+    </table></div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="tab-products" class="tabpage">
+    <div class="toolbar">
+      <input id="searchProducts" placeholder="খুঁজুন: নাম, ব্র্যান্ড, ক্যাটাগরি…">
+      <button class="btn" onclick="openForm('products')">+ নতুন প্রোডাক্ট</button>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ID</th><th>নাম</th><th>ক্যাটাগরি</th><th>ব্র্যান্ড</th><th>একক</th><th>ক্রয় দর</th><th>বিক্রয় দর</th><th>স্টক</th><th>মিনি.</th><th>অ্যাকশন</th></tr></thead>
+      <tbody id="productsTable"></tbody>
+    </table></div>
+  </section>
+
+  <!-- PURCHASES -->
+  <section id="tab-purchases" class="tabpage">
+    <div class="toolbar">
+      <input id="searchPurchases" placeholder="খুঁজুন: প্রোডাক্ট, সাপ্লায়ার…">
+      <button class="btn" onclick="openForm('purchases')">+ নতুন ক্রয়</button>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ID</th><th>তারিখ</th><th>প্রোডাক্ট</th><th>সাপ্লায়ার</th><th>পরিমাণ</th><th>দর</th><th>মোট</th><th>জমা</th><th>বাকি</th><th>অ্যাকশন</th></tr></thead>
+      <tbody id="purchasesTable"></tbody>
+    </table></div>
+  </section>
+
+  <!-- SALES -->
+  <section id="tab-sales" class="tabpage">
+    <div class="toolbar">
+      <input id="searchSales" placeholder="খুঁজুন: প্রোডাক্ট, কাস্টমার…">
+      <button class="btn" onclick="openForm('sales')">+ নতুন বিক্রয়</button>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ID</th><th>তারিখ</th><th>প্রোডাক্ট</th><th>কাস্টমার</th><th>পরিমাণ</th><th>দর</th><th>মোট</th><th>জমা</th><th>বাকি</th><th>অ্যাকশন</th></tr></thead>
+      <tbody id="salesTable"></tbody>
+    </table></div>
+  </section>
+
+  <!-- SUPPLIERS -->
+  <section id="tab-suppliers" class="tabpage">
+    <div class="toolbar">
+      <input id="searchSuppliers" placeholder="খুঁজুন: নাম, ফোন…">
+      <button class="btn" onclick="openForm('suppliers')">+ নতুন সাপ্লায়ার</button>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ID</th><th>নাম</th><th>ফোন</th><th>ঠিকানা</th><th>মোট বাকি</th><th>অ্যাকশন</th></tr></thead>
+      <tbody id="suppliersTable"></tbody>
+    </table></div>
+  </section>
+
+  <!-- CUSTOMERS -->
+  <section id="tab-customers" class="tabpage">
+    <div class="toolbar">
+      <input id="searchCustomers" placeholder="খুঁজুন: নাম, ফোন…">
+      <button class="btn" onclick="openForm('customers')">+ নতুন কাস্টমার</button>
+    </div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>ID</th><th>নাম</th><th>ফোন</th><th>ঠিকানা</th><th>মোট বাকি</th><th>অ্যাকশন</th></tr></thead>
+      <tbody id="customersTable"></tbody>
+    </table></div>
+  </section>
+
+  <!-- DUES -->
+  <section id="tab-dues" class="tabpage">
+    <h2>কাস্টমার বাকি</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>কাস্টমার</th><th>মোট বাকি</th></tr></thead>
+      <tbody id="custDueTable"></tbody>
+    </table></div>
+    <h2>সাপ্লায়ার বাকি</h2>
+    <div class="tablewrap"><table>
+      <thead><tr><th>সাপ্লায়ার</th><th>মোট বাকি</th></tr></thead>
+      <tbody id="supDueTable"></tbody>
+    </table></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="tab-settings" class="tabpage">
+    <h2>সেটিংস</h2>
+    <p class="hint">প্রথমবার: Google Sheet-এ Code.gs বসিয়ে Web App হিসেবে Deploy করুন, তারপর নিচে সেই Web App URL বসান। URL কাউকে দেবেন না — এটাই আপনার শিটের চাবি।</p>
+    <label>দোকানের নাম</label>
+    <input id="cfgShop" placeholder="Fatiha Tyre & Battery">
+    <label>Google Apps Script Web App URL</label>
+    <input id="cfgUrl" placeholder="https://script.google.com/macros/s/…/exec">
+    <div class="row">
+      <button class="btn" id="saveCfgBtn">সেভ করুন</button>
+      <button class="btn secondary" id="setupSheetBtn">শিটে ট্যাব বানান (প্রথমবার)</button>
+    </div>
+    <p id="cfgMsg" class="hint"></p>
+  </section>
+</main>
+
+<!-- FORM MODAL -->
+<div id="modal" class="modal hidden">
+  <div class="modalbox">
+    <h3 id="modalTitle"></h3>
+    <div id="modalFields"></div>
+    <div class="row">
+      <button class="btn" id="modalSave">সেভ</button>
+      <button class="btn secondary" id="modalClose">বাতিল</button>
+    </div>
+    <p id="modalMsg" class="hint"></p>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
