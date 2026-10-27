@@ -43,9 +43,20 @@ IPS / Solar Battery dokan-er jonno stock management app. Database: Google Sheet
   menu-te mot hisab dekhay।
 - **Rosid:** Sales row-te “রসিদ” চাপলে print korar moto rosid khulbe।
 
+## AI Studio-te use (GitHub theke import)
+
+1. AI Studio → Build mode → prompt box-er **+ (Add files)** → **Import from GitHub** → repo `fatiha-tyre-battery-stock` (branch `main`) select koro.
+2. Import-er por `aistudio-first-prompt.txt` file-er puro lekha prompt-e paste koro — eta React-e convert kora, ID/logic bodlano ar `Code.gs` chhoa bondho kore.
+3. Puro step, edit-er niom, GitHub-e push/pull ar venge gele ki korbe — sob `AI-STUDIO.md`-e ache.
+4. Mone rakho: `Code.gs` sudhu Sheet-er Apps Script-e cholbe, AI Studio-te na. Web App URL kokhono code-e likho na.
+
 ## File
 
 - `index.html` — app-er page
 - `styles.css` — design
 - `app.js` — app-er logic
 - `Code.gs` — Google Sheet-er sathe jogajog (Apps Script backend)
+- `fatiha-stock-single-file.html` — ek file-e puro app (AI Studio backup / shohoj khola)
+- `AI-STUDIO.md` — AI Studio import + use korar guide
+- `aistudio-first-prompt.txt` — AI Studio-te prothom prompt (copy-paste)
+- `metadata.json` — app-er nam (AI Studio metadata)

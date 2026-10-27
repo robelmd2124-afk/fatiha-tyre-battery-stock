@@ -1,0 +1,11 @@
+Use the already-imported GitHub code exactly as it is. Do NOT rewrite this app.
+
+STRICT RULES — follow all of them:
+1. Do NOT convert this app to React, Next.js, Vite, or any framework. Keep it as plain vanilla HTML + CSS + JavaScript: index.html, styles.css, and app.js only.
+2. Do NOT change any element ID, function name, localStorage key, or API behaviour. The IDs used by app.js (for example shopNameTitle, statusBar, dStockValue, searchProducts, cfgUrl, modalSave) must stay exactly the same.
+3. Do NOT change how data is loaded or saved. The app fetches a Google Apps Script Web App URL stored in the browser's localStorage under the key "ftb_url" (set in the Settings tab). Never hardcode that URL, a Sheet ID, or any secret into the code, and never ask me for the URL.
+4. Do NOT touch Code.gs. Code.gs is the Google Apps Script backend that runs ONLY inside the Google Sheet (Extensions > Apps Script). It must stay exactly as it is in the repository.
+5. Keep the current premium design (dark header, Hind Siliguri font, icon tabs, stat cards). Only change the visual style or add a feature if I explicitly ask for it in a later prompt, and keep every change minimal.
+6. The single-file version fatiha-stock-single-file.html must always contain the same design and logic as index.html + styles.css + app.js combined. If I ask you to update the app, update the 3-file version AND regenerate the single-file version to match.
+
+FIRST, just confirm: list the files you imported and confirm the app preview loads with all 8 tabs (Dashboard, Stock, Purchases, Sales, Suppliers, Customers, Dues, Settings) working, without changing any code. Then wait for my next instruction.
