@@ -7,46 +7,58 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="top-shell">
 <header class="topbar">
   <div class="brand">
     <div class="logo">FT</div>
     <div>
-      <h1 id="shopNameTitle">Fatiha Tyre & Battery</h1>
-      <p>স্টক ম্যানেজমেন্ট</p>
+      <h1 id="shopNameTitle">Fatiha Tyre &amp; Battery</h1>
+      <p>Stock Management System</p>
     </div>
   </div>
-  <button id="refreshBtn" class="btn secondary">↻ রিফ্রেশ</button>
+  <div class="top-right">
+    <span class="edition"><i></i>Premium</span>
+    <button id="refreshBtn" class="btn secondary">↻ রিফ্রেশ</button>
+  </div>
 </header>
 
 <nav class="tabs" id="mainTabs">
-  <button data-tab="dashboard" class="active">ড্যাশবোর্ড</button>
-  <button data-tab="products">স্টক</button>
-  <button data-tab="purchases">ক্রয়</button>
-  <button data-tab="sales">বিক্রয়</button>
-  <button data-tab="suppliers">সাপ্লায়ার</button>
-  <button data-tab="customers">কাস্টমার</button>
-  <button data-tab="dues">বাকি</button>
-  <button data-tab="settings">সেটিংস</button>
+  <button data-tab="dashboard" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>ড্যাশবোর্ড</button>
+  <button data-tab="products"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg>স্টক</button>
+  <button data-tab="purchases"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.4 11.2a1.5 1.5 0 0 0 1.5 1.2h7.9a1.5 1.5 0 0 0 1.5-1.2L20 8H6"/></svg>ক্রয়</button>
+  <button data-tab="sales"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16l-2-1.5L16 20l-2-1.5L12 20l-2-1.5L8 20l-2-1.5L4 20V4z"/><path d="M8 9h8M8 13h5"/></svg>বিক্রয়</button>
+  <button data-tab="suppliers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg>সাপ্লায়ার</button>
+  <button data-tab="customers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5"/><circle cx="17.5" cy="9" r="2.5"/><path d="M16 15.2c2.8.3 4.7 1.7 5.5 4.8"/></svg>কাস্টমার</button>
+  <button data-tab="dues"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h4"/></svg>বাকি</button>
+  <button data-tab="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3 1a7 7 0 0 0-2-1.2L14.2 3h-4l-.4 2.7a7 7 0 0 0-2 1.2l-2.3-1-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-1a7 7 0 0 0 2 1.2l.4 2.7h4l.4-2.7a7 7 0 0 0 2-1.2l2.3 1 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/></svg>সেটিংস</button>
 </nav>
+</div>
 
 <main>
   <div id="statusBar" class="status">লোড হচ্ছে…</div>
 
   <!-- DASHBOARD -->
   <section id="tab-dashboard" class="tabpage active">
-    <div class="cards">
-      <div class="card"><span>মোট স্টক মূল্য (ক্রয় দরে)</span><b id="dStockValue">৳ ০</b></div>
-      <div class="card"><span>আজকের বিক্রয়</span><b id="dTodaySales">৳ ০</b></div>
-      <div class="card"><span>কাস্টমার বাকি</span><b id="dCustDue">৳ ০</b></div>
-      <div class="card"><span>সাপ্লায়ার বাকি</span><b id="dSupDue">৳ ০</b></div>
-      <div class="card warn"><span>লো স্টক আইটেম</span><b id="dLowCount">০</b></div>
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">ব্যবসার সারাংশ</p>
+        <h2>ড্যাশবোর্ড</h2>
+        <p class="page-sub">আজকের বিক্রয়, স্টক মূল্য আর বাকির হিসাব — এক নজরে।</p>
+      </div>
     </div>
-    <h2>লো স্টক / নেগেটিভ স্টক</h2>
+    <div class="cards">
+      <div class="card"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></span><span>মোট স্টক মূল্য (ক্রয় দরে)</span></div><b id="dStockValue">৳ ০</b><span class="card-sub">বর্তমান স্টকের মোট মূল্য</span></div>
+      <div class="card"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><span>আজকের বিক্রয়</span></div><b id="dTodaySales">৳ ০</b><span class="card-sub">আজকের মোট বিক্রয়</span></div>
+      <div class="card"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.4 3.4-5 6.5-5s5.7 1.6 6.5 5"/></svg></span><span>কাস্টমার বাকি</span></div><b id="dCustDue">৳ ০</b><span class="card-sub">কাস্টমারদের কাছে পাওনা</span></div>
+      <div class="card"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/></svg></span><span>সাপ্লায়ার বাকি</span></div><b id="dSupDue">৳ ০</b><span class="card-sub">সাপ্লায়ারদের দিতে হবে</span></div>
+      <div class="card warn"><div class="card-top"><span class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l10 18H2L12 3z"/><path d="M12 10v4M12 17.5v.5"/></svg></span><span>লো স্টক আইটেম</span></div><b id="dLowCount">০</b><span class="card-sub">মিনিমাম স্টকের নিচে</span></div>
+    </div>
+    <div class="section-head"><h2>লো স্টক / নেগেটিভ স্টক</h2><p>এখনই রিস্টক করা দরকার</p></div>
     <div class="tablewrap"><table>
       <thead><tr><th>প্রোডাক্ট</th><th>ক্যাটাগরি</th><th>স্টক</th><th>মিনিমাম</th></tr></thead>
       <tbody id="lowTable"></tbody>
     </table></div>
-    <h2>সাম্প্রতিক বিক্রয়</h2>
+    <div class="section-head"><h2>সাম্প্রতিক বিক্রয়</h2><p>সর্বশেষ ৮টি বিক্রয়</p></div>
     <div class="tablewrap"><table>
       <thead><tr><th>তারিখ</th><th>প্রোডাক্ট</th><th>কাস্টমার</th><th>পরিমাণ</th><th>মোট</th></tr></thead>
       <tbody id="recentSales"></tbody>
@@ -55,8 +67,15 @@
 
   <!-- PRODUCTS -->
   <section id="tab-products" class="tabpage">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">ইনভেন্টরি</p>
+        <h2>স্টক</h2>
+        <p class="page-sub">সব প্রোডাক্ট, দর আর বর্তমান স্টক।</p>
+      </div>
+    </div>
     <div class="toolbar">
-      <input id="searchProducts" placeholder="খুঁজুন: নাম, ব্র্যান্ড, ক্যাটাগরি…">
+      <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="searchProducts" placeholder="খুঁজুন: নাম, ব্র্যান্ড, ক্যাটাগরি…"></div>
       <button class="btn" onclick="openForm('products')">+ নতুন প্রোডাক্ট</button>
     </div>
     <div class="tablewrap"><table>
@@ -67,8 +86,15 @@
 
   <!-- PURCHASES -->
   <section id="tab-purchases" class="tabpage">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">ক্রয় হিসাব</p>
+        <h2>ক্রয়</h2>
+        <p class="page-sub">সাপ্লায়ার থেকে কেনা মালের রেকর্ড।</p>
+      </div>
+    </div>
     <div class="toolbar">
-      <input id="searchPurchases" placeholder="খুঁজুন: প্রোডাক্ট, সাপ্লায়ার…">
+      <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="searchPurchases" placeholder="খুঁজুন: প্রোডাক্ট, সাপ্লায়ার…"></div>
       <button class="btn" onclick="openForm('purchases')">+ নতুন ক্রয়</button>
     </div>
     <div class="tablewrap"><table>
@@ -79,8 +105,15 @@
 
   <!-- SALES -->
   <section id="tab-sales" class="tabpage">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">বিক্রয় হিসাব</p>
+        <h2>বিক্রয়</h2>
+        <p class="page-sub">কাস্টমারের কাছে বিক্রির রেকর্ড ও রসিদ।</p>
+      </div>
+    </div>
     <div class="toolbar">
-      <input id="searchSales" placeholder="খুঁজুন: প্রোডাক্ট, কাস্টমার…">
+      <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="searchSales" placeholder="খুঁজুন: প্রোডাক্ট, কাস্টমার…"></div>
       <button class="btn" onclick="openForm('sales')">+ নতুন বিক্রয়</button>
     </div>
     <div class="tablewrap"><table>
@@ -91,8 +124,15 @@
 
   <!-- SUPPLIERS -->
   <section id="tab-suppliers" class="tabpage">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">যোগাযোগ</p>
+        <h2>সাপ্লায়ার</h2>
+        <p class="page-sub">যাদের কাছ থেকে মাল কেনা হয়।</p>
+      </div>
+    </div>
     <div class="toolbar">
-      <input id="searchSuppliers" placeholder="খুঁজুন: নাম, ফোন…">
+      <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="searchSuppliers" placeholder="খুঁজুন: নাম, ফোন…"></div>
       <button class="btn" onclick="openForm('suppliers')">+ নতুন সাপ্লায়ার</button>
     </div>
     <div class="tablewrap"><table>
@@ -103,8 +143,15 @@
 
   <!-- CUSTOMERS -->
   <section id="tab-customers" class="tabpage">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">যোগাযোগ</p>
+        <h2>কাস্টমার</h2>
+        <p class="page-sub">যারা দোকান থেকে কেনেন।</p>
+      </div>
+    </div>
     <div class="toolbar">
-      <input id="searchCustomers" placeholder="খুঁজুন: নাম, ফোন…">
+      <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="searchCustomers" placeholder="খুঁজুন: নাম, ফোন…"></div>
       <button class="btn" onclick="openForm('customers')">+ নতুন কাস্টমার</button>
     </div>
     <div class="tablewrap"><table>
@@ -115,12 +162,19 @@
 
   <!-- DUES -->
   <section id="tab-dues" class="tabpage">
-    <h2>কাস্টমার বাকি</h2>
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">পাওনা / দেনা</p>
+        <h2>বাকি</h2>
+        <p class="page-sub">কার কাছে কত পাওনা, কাকে কত দিতে হবে।</p>
+      </div>
+    </div>
+    <div class="section-head"><h2>কাস্টমার বাকি</h2></div>
     <div class="tablewrap"><table>
       <thead><tr><th>কাস্টমার</th><th>মোট বাকি</th></tr></thead>
       <tbody id="custDueTable"></tbody>
     </table></div>
-    <h2>সাপ্লায়ার বাকি</h2>
+    <div class="section-head"><h2>সাপ্লায়ার বাকি</h2></div>
     <div class="tablewrap"><table>
       <thead><tr><th>সাপ্লায়ার</th><th>মোট বাকি</th></tr></thead>
       <tbody id="supDueTable"></tbody>
@@ -129,19 +183,28 @@
 
   <!-- SETTINGS -->
   <section id="tab-settings" class="tabpage">
-    <h2>সেটিংস</h2>
-    <p class="hint">প্রথমবার: Google Sheet-এ Code.gs বসিয়ে Web App হিসেবে Deploy করুন, তারপর নিচে সেই Web App URL বসান। URL কাউকে দেবেন না — এটাই আপনার শিটের চাবি।</p>
-    <label>দোকানের নাম</label>
-    <input id="cfgShop" placeholder="Fatiha Tyre & Battery">
-    <label>Google Apps Script Web App URL</label>
-    <input id="cfgUrl" placeholder="https://script.google.com/macros/s/…/exec">
-    <div class="row">
-      <button class="btn" id="saveCfgBtn">সেভ করুন</button>
-      <button class="btn secondary" id="setupSheetBtn">শিটে ট্যাব বানান (প্রথমবার)</button>
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">কনফিগারেশন</p>
+        <h2>সেটিংস</h2>
+      </div>
     </div>
-    <p id="cfgMsg" class="hint"></p>
+    <div class="panel">
+      <p class="hint">প্রথমবার: Google Sheet-এ Code.gs বসিয়ে Web App হিসেবে Deploy করুন, তারপর নিচে সেই Web App URL বসান। URL কাউকে দেবেন না — এটাই আপনার শিটের চাবি।</p>
+      <label>দোকানের নাম</label>
+      <input id="cfgShop" placeholder="Fatiha Tyre & Battery">
+      <label>Google Apps Script Web App URL</label>
+      <input id="cfgUrl" placeholder="https://script.google.com/macros/s/…/exec">
+      <div class="row">
+        <button class="btn" id="saveCfgBtn">সেভ করুন</button>
+        <button class="btn secondary" id="setupSheetBtn">শিটে ট্যাব বানান (প্রথমবার)</button>
+      </div>
+      <p id="cfgMsg" class="hint"></p>
+    </div>
   </section>
 </main>
+
+<footer class="app-footer"><span>Fatiha Tyre &amp; Battery — Stock Management</span><span>ডেটা Google Sheet-এ সংরক্ষিত হয়</span></footer>
 
 <!-- FORM MODAL -->
 <div id="modal" class="modal hidden">
